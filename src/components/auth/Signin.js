@@ -1,23 +1,22 @@
-import React, { Component } from 'react';
-import { reduxForm, Field } from 'redux-form';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
-import * as actions from '../../actions';
+import React, { Component } from "react";
+import { reduxForm, Field } from "redux-form";
+import { compose } from "redux";
+import { connect } from "react-redux";
+import * as actions from "../../actions";
 
 class Signin extends Component {
-  onSubmit = formProps => {
+  onSubmit = (formProps) => {
     this.props.signin(formProps, () => {
-      this.props.history.push('/feature');
+      this.props.history.push("/feature");
     });
   };
 
   render() {
     const { handleSubmit } = this.props;
-
     return (
       <form onSubmit={handleSubmit(this.onSubmit)}>
         <fieldset>
-          <label>Email</label>
+          <label>email</label>
           <Field
             name="email"
             type="text"
@@ -34,18 +33,23 @@ class Signin extends Component {
             autoComplete="none"
           />
         </fieldset>
-        <div>{this.props.errorMessage}</div>
-        <button>Sign In!</button>
+        {this.props.errorMessage && (
+          <div style={{ color: "red" }}>{this.props.errorMessage}</div>
+        )}
+        <button>Sign in</button>
       </form>
     );
   }
 }
 
 function mapStateToProps(state) {
-  return { errorMessage: state.auth.errorMessage };
+  return {
+    authenticated: state.auth.authenticated,
+    errorMessage: state.auth.errorMessage,
+  };
 }
 
 export default compose(
   connect(mapStateToProps, actions),
-  reduxForm({ form: 'signin' })
+  reduxForm({ form: "signin" }),
 )(Signin);

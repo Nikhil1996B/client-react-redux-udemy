@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import requireAuth from './requireAuth';
+import React, { Component } from "react";
+import requireAuth from "./requreAuth";
 
 class Feature extends Component {
   render() {
-    return <div>This is the feature!</div>;
+    return <div>This is the feature</div>;
   }
 }
 

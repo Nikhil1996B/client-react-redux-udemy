@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import './HeaderStyle.css';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import "./HeaderStyles.css";
 
 class Header extends Component {
   renderLinks() {
@@ -21,7 +21,6 @@ class Header extends Component {
       );
     }
   }
-
   render() {
     return (
       <div className="header">
@@ -33,7 +32,8 @@ class Header extends Component {
 }
 
 function mapStateToProps(state) {
-  return { authenticated: state.auth.authenticated };
+  return {
+    authenticated: state.auth.authenticated,
+  };
 }
-
 export default connect(mapStateToProps)(Header);
